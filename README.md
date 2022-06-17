@@ -18,3 +18,5 @@ Starting the 3 months Internship preparation.
 12. [Merge Two Sorted Array](./DSA-Prep/Linked-List/Level%20-%201/Merge-two-sorted-array.cpp) 
 #### Level - 2
 13. [Add two Number](./DSA-Prep/Linked-List/Level%20-%202/Add-Two-Number.cpp)
+14. [Reverse Linked List 2](./DSA-Prep/Linked-List/Level%20-%202/Reverse-Linked-List-2.cpp)
+15. [Remove nth Node from linked list from end](./DSA-Prep/Linked-List/Level%20-%202/Remove-nth-node-from-end.cpp)
