@@ -1,4 +1,4 @@
-<h2><a href="https://leetcode.com/problems/unique-morse-code-words/">804. Unique Morse Code Words</a></h2><h3>Easy</h3><hr><div><p>International Morse Code defines a standard encoding where each letter is mapped to a series of dots and dashes, as follows:</p>
+<h2><a href="https://leetcode.com/problems/unique-morse-code-words/solution/">804. Unique Morse Code Words</a></h2><h3>Easy</h3><hr><div><p>International Morse Code defines a standard encoding where each letter is mapped to a series of dots and dashes, as follows:</p>
 
 <ul>
 	<li><code>'a'</code> maps to <code>".-"</code>,</li>
