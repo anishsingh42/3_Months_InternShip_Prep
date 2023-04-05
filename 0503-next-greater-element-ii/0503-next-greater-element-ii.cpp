@@ -9,10 +9,10 @@ public:
             while(!st.empty() && st.top() <= a[i%n]){
                 st.pop();
             }
-            if(i<n){
+            // if(i<n){
                 if(!st.empty())
                     ans[i%n] = st.top();
-            }
+            // }
             st.push(a[i%n]);
         }
         
