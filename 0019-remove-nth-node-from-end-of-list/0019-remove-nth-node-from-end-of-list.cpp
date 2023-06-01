@@ -11,26 +11,12 @@
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
-        ListNode * dummy = new ListNode(0);
-        dummy->next = head;
-        ListNode * temp = dummy;
-        int sizeList = 0;
-        while(temp != NULL){
-            sizeList++;
-            temp = temp->next;
-        }
-        // if()
-        // cout << sizeList;
-        temp = dummy;
-        ListNode * prev = NULL;
-        for(int i=0;i<(sizeList-n);i++){
-            prev = temp;
-            temp = temp->next;
-        }
-        // cout << prev->val << " " << temp->val;
-        prev->next = temp->next;
-        temp->next = NULL;
-        delete temp;
-        return dummy->next;
-    }
+        ListNode*fast = head;
+        ListNode*slow = head;
+        for(int i=0;i<n;i++) fast=fast->next;
+        if(!fast) return head->next;
+        while(fast->next) {fast=fast->next; slow=slow->next;}
+        slow->next = slow->next->next;
+        return head;
+    }  
 };
