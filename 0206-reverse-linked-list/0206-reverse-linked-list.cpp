@@ -10,23 +10,21 @@
  */
 class Solution {
 public:
-    ListNode* reverseList(ListNode* head) {
-        // iterative soln
-        if(!head) return head;
+    ListNode* reverse(ListNode* curr, ListNode* past, ListNode* future){
+        if(!curr) return past;
+        future = curr->next;
+        curr->next = past;
+        past = curr;
+        curr = future;
+        return reverse(curr, past, future);
         
-        // ListNode * tmp = head;
+    }
+    ListNode* reverseList(ListNode* head) {
+        // recursive soln
+        if(!head) return head;
         ListNode * curr = head;
         ListNode * past = NULL;
         ListNode * future = NULL;
-        
-        while(curr){
-            future = curr->next;
-            curr->next = past;
-            past = curr;
-            curr = future;
-        }
-        head = past;
-        return head;
-        
+        return reverse(curr, past, future);
     }
 };
