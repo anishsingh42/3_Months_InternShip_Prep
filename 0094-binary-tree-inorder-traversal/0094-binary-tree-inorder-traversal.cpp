@@ -13,7 +13,7 @@ class Solution {
 public:
     void findingInorder(TreeNode* root, vector<int> &ans){
         if(!root) return;
-        //root->left->right
+        //left->root->right
         findingInorder(root->left, ans);
         ans.push_back(root->val);
         findingInorder(root->right, ans);
