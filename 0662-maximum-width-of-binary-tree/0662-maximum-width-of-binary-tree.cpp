@@ -31,7 +31,7 @@ public:
                 prevNum = num;
             }
             
-            res = max(res, static_cast<int>(num - prevNum) + 1);
+            res = max(res, int(num - prevNum) + 1);
             
             if (node->left) {
                 q.push({node->left, {2 * num, lvl + 1}});
