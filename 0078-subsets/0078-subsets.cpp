@@ -5,12 +5,11 @@ public:
             soln.push_back(op);
             return soln;
         }
-        vector<int> op1 = op;
-        vector<int> op2 = op;
-        
-        op2.push_back(arr[i++]);
-        solve(arr,i,op1,soln);
-        solve(arr,i,op2,soln);
+        //exclude the selection of current element
+        solve(arr,i+1,op,soln);
+        //select the current element
+        op.push_back(arr[i]);
+        solve(arr,i+1,op,soln);
         return soln;
     }
     vector<vector<int>> subsets(vector<int>& arr) {
