@@ -1,17 +1,22 @@
 class Solution {
 public:
-    vector<string>res;
-    void helper(int n, int open, int close, string current){
-        //base condition 
-        if(current.size() == n*2){
-            res.push_back(current);
+    void solve(int open, int close, string op, vector<string>& res){
+        //base condition
+        if(open == 0 and close == 0){
+            res.push_back(op);
             return;
         }
-        if(open < n) helper(n,open+1,close,current+"(");
-        if(close < open) helper(n,open,close+1,current+")");
+        
+        //add open bracket
+        if(open!=0) solve(open-1, close, op+"(", res);        
+        //add close bracket
+        if(close > open) solve(open, close-1, op+")", res);
+        return;
     }
     vector<string> generateParenthesis(int n) {
-        helper(n,0,0,"");
+        vector<string> res;
+        solve(n, n, "", res);
         return res;
     }
+    
 };
