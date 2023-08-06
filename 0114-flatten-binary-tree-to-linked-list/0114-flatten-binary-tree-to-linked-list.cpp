@@ -11,27 +11,21 @@
  */
 class Solution {
 public:
-    void inorder(TreeNode* root, vector<TreeNode*> & arr){
-        if(!root) return;
-        
-        arr.push_back(root);
-        inorder(root->left, arr);
-        inorder(root->right, arr);
-        
-        return;
-    }
     void flatten(TreeNode* root) {
-        if(!root) return;
-        vector<TreeNode*> arr;
-        inorder(root, arr);
-        
-        for(int i=0;i<arr.size()-1;i++){
-            arr[i]->left = nullptr;
-            arr[i]->right = arr[i+1];
+        if(root){
+            TreeNode* tempRight = root->right;
+            root->right = root->left;
+            root->left = nullptr;
+            
+            
+            //last node of the left attach with the tempRight
+            TreeNode * node = root;
+            
+            while(node->right){node = node->right;}
+            
+            node->right = tempRight;
+            flatten(root->right);
         }
-        
-        arr.back()->left = nullptr;
-        arr.back()->right = nullptr;
         
         return;
     }
