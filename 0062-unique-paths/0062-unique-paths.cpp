@@ -9,7 +9,7 @@ public:
         long long ans = 1;
         
         for(int i=right+down, j=1; i> max(right, down); i--,j++){
-            cout << i << " " << j << endl;
+            // cout << i << " " << j << endl;
             ans = (ans * i)/j;
         }
         
