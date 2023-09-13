@@ -1,54 +1,44 @@
 class Solution {
 public:
-    int firstOcc(vector<int>&a, int target){
-        int fo = -1;
+    int first_occ(vector<int> &nums, int target){
         int l = 0;
-        int h = a.size()-1;
+        int h = nums.size()-1;
         int m;
-        while(l<=h){
+        int fo = -1;
+        while(l <= h){
             m = l + (h-l)/2;
-            if(a[m] == target){
+            if(nums[m] == target){
                 fo = m;
                 h = m-1;
             }
-            else if(a[m] < target){
-                l = m+1;
-            }
-            else{
-                h = m-1;
-            }
+            else if(nums[m] > target) h = m-1;
+            else l = m+1;
         }
-        
-        return fo;
+            return fo;
     }
-    
-    int lastOcc(vector<int>&a, int target){
-        int lo = -1;
+    int last_occ(vector<int> &nums, int target){
         int l = 0;
-        int h = a.size()-1;
+        int h = nums.size()-1;
         int m;
-        while(l<=h){
+        int lo = -1;
+        while(l <= h){
             m = l + (h-l)/2;
-            if(a[m] == target){
+            if(nums[m] == target){
                 lo = m;
                 l = m+1;
             }
-            else if(a[m] < target){
-                l = m+1;
-            }
-            else{
-                h = m-1;
-            }
+            else if(nums[m] > target) h = m-1;
+            else l = m+1;
         }
-        
-        return lo;
+            return lo;
     }
     vector<int> searchRange(vector<int>& nums, int target) {
-        int first = firstOcc(nums,target);
-        int last = lastOcc(nums,target);
+        //use binary search to find first occ and the last occ seperately of the target variable 
         vector<int> ans;
-        ans.push_back(first);
-        ans.push_back(last);
+        int first_occurence = first_occ(nums,target);
+        int last_occurence = last_occ(nums,target);
+        ans.push_back(first_occurence);
+        ans.push_back(last_occurence);
         return ans;
     }
 };
