@@ -1,23 +1,28 @@
 class Solution {
 public:
-    vector<vector<int>> permute(vector<int>& nums) {
+    vector<vector<int>> permute(vector<int>& arr) {
+        //solve this problem in a recursive fashion 
+        //get the size of the array
+        int n = arr.size() - 1; // get the last element of the array
         vector<vector<int>> res;
-        int n = nums.size()-1;
-        permutation(res, nums, 0, n);
+        get_permutation(res, arr, 0, n);
         return res;
     }
     
-    void permutation(vector<vector<int>> &res, vector<int> &nums, int index, int n){
+    void get_permutation(vector<vector<int>> &res, vector<int> &arr, int index, int n){
         if(index == n){
-            res.push_back(nums);
+            res.push_back(arr);
             return;
         }
         
-        
-        for(int i=index;i<=n;i++){
-            swap(nums[index], nums[i]);
-            permutation(res, nums, index+1, n);
-            swap(nums[index], nums[i]);
+        //if not the base case ... perform the permutation 
+        for(int i = index; i <= n; i++){
+            //swap the value to make a new permutation
+            swap(arr[index], arr[i]);
+            //recursive call the next index
+            get_permutation(res, arr, index+1, n);
+            //backtrack to the previous known array
+            swap(arr[index], arr[i]);
         }
         
         return;
