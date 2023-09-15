@@ -1,21 +1,28 @@
 class Solution {
 public:
-    vector<vector<int>> solve(vector<int> & arr,int i, vector<int> op, vector<vector<int>>&soln){
-        if(i==arr.size()){
-            soln.push_back(op);
-            return soln;
+    void make_subsets(vector<int> &nums, vector<vector<int>> &res, int index, vector<int> op){
+        //base case
+        if(index == nums.size()){
+            res.push_back(op);
+            return;
         }
-        //exclude the selection of current element
-        solve(arr,i+1,op,soln);
-        //select the current element
-        op.push_back(arr[i]);
-        solve(arr,i+1,op,soln);
-        return soln;
+        
+        //hypothesis and induction 
+        
+        //reject the element
+        make_subsets(nums, res, index+1, op);
+        //choose the element
+        op.push_back(nums[index]);
+        make_subsets(nums, res, index+1, op);
+        
+        return;
+        
+        
     }
-    vector<vector<int>> subsets(vector<int>& arr) {
-        vector<vector<int>> soln;
-        vector<int>op;
-        solve(arr,0,op,soln);
-        return soln;
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<vector<int>> res;
+        vector<int> op;
+        make_subsets(nums, res, 0, op);
+        return res;
     }
 };
